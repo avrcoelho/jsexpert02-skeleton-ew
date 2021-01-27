@@ -14,7 +14,7 @@ class View {
     }
 
     if (srcObject) {
-      video.addEventLstener("loadedmetadata", (_) => video.play());
+      video.addEventListener("loadedmetadata", (_) => video.play());
     }
 
     return video;

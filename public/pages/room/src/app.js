@@ -14,20 +14,18 @@ const onload = () => {
   //  const recorderBtn = document.getElementById('record')
   // recorderBtn.addEventListener('click', recordClick(recorderBtn))
 
+  const socketUrl = "http://localhost:3000";
+  const socketBuilder = new SocketBuilder({ socketUrl });
   const view = new View();
-  view.renderVideo({
-    userId: "test01",
-    url: "https://media.giphy.com/media/SYQfmNWiQqybnfwgfp/giphy.mp4",
-  });
-  view.renderVideo({
-    userId: "test02",
-    isCurrentId: true,
-    url: "https://media.giphy.com/media/SYQfmNWiQqybnfwgfp/giphy.mp4",
-  });
-  view.renderVideo({
-    userId: "test02",
-    url: "https://media.giphy.com/media/SYQfmNWiQqybnfwgfp/giphy.mp4",
-  });
+  const media = new Media();
+  const deps = {
+    view,
+    media,
+    room,
+    socketBuilder,
+  };
+
+  Business.initialize(deps);
 };
 
 window.onload = onload;
